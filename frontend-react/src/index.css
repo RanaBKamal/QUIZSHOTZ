@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title-text{
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #000;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.title-text:hover{
+  color: rgb(101, 101, 101);
+}
