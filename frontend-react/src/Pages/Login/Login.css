@@ -1,0 +1,30 @@
+.login-page{
+    margin: 0;
+    padding: 0;
+}
+
+.login-banner-img{
+    height: 30em;
+    width: 40em;
+    backdrop-filter: blur(10px);
+}
+
+.login-banner-img{
+    filter: brightness(.4);
+}
+
+.login-rect{
+    background: #E47946;
+    color: #E47946;
+    margin-right: 10px;
+}
+
+
+section {
+    position: absolute;
+    top: 40%;
+    left: 28%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}

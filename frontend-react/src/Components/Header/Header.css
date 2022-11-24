@@ -5,4 +5,11 @@ body{
 
 a{
     text-decoration: none !important;
+    color: #f1f1f1 !important;
 }
+
+.bg-darkblue-custom{
+    background: #008C95;
+    color: #f1f1f1;
+}
+

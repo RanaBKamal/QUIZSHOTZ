@@ -5,9 +5,9 @@ import './Header.css';
 const Header = () => {
     return (
         <Fragment>
-            <Navbar bg="light" expand="lg" className="navbar-custom py-3">
-                <Container>
-                    <Navbar.Brand>
+            <Navbar expand="lg" className="navbar-custom py-3 bg-darkblue-custom">
+                <Container className=''>
+                    <Navbar.Brand className='fw-bold text-dark'> 
                         {" "}
                         <NavLink to="/">
                             QUIZSHOT
@@ -35,7 +35,7 @@ const Header = () => {
                             className="me-2"
                             aria-label="Search"
                         />
-                        <Button variant="outline-success" className="me-4">
+                        <Button variant="outline-light" className="me-4">
                             Search
                         </Button>
                         </Form>
