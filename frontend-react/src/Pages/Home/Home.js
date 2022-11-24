@@ -7,11 +7,13 @@ import './Home.css';
 
 const Home = () => {
     return (
-        <Fragment>
-            <Header/>
-            <HomeCarousel/>
-            <Footer/>
-        </Fragment>
+      <Fragment>
+        <Header />
+        <HomeCarousel />
+        
+
+        <Footer />
+      </Fragment>
     );
 }
 
