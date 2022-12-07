@@ -42,7 +42,11 @@ const Header = () => {
               </Form>
               <NavLink to="/login">Login</NavLink> &nbsp;|&nbsp;
               <NavLink to="/signup">SignUp</NavLink>
-              <NavDropdown title="Falano" id="basic-nav-dropdown" className='d-none'>
+              <NavDropdown
+                title="Falano"
+                id="basic-nav-dropdown"
+                className="d-none"
+              >
                 <NavDropdown.Item href="/userprofile" className="text-dark">
                   Profile
                 </NavDropdown.Item>

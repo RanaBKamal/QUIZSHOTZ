@@ -11,17 +11,17 @@ const Login = () => {
             <Header/>
             <Container>
                 <Row className='login-page '>
-                    <Col className='col-xl-6 col-lg-6 bg-light mt-5 mb-5 justify-evenly items-center'>
-                        <div className=''>
+                    <Col className='col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6 bg-light mt-5 mb-5 justify-evenly items-center d-none-card'>
+                        <div className='login-card'>
                             <img src='https://static.vecteezy.com/system/resources/previews/007/972/540/non_2x/abstract-background-graphic-desktop-wallpaper-hd-yellow-background-with-stripes-abstract-background-texture-design-bright-poster-banner-yellow-and-blue-background-illustration-free-vector.jpg' alt='login-img' className='login-banner-img image-relative' />
-                            <section className='text-center'>
+                            <section className='text-center login-text'>
                                 <small>Nice to See you back</small>
                                 <h1>Welcome Back</h1>
                                 <small> Lorem ipsum door vu wa lorem door ispum </small>
                             </section>
                         </div>
                     </Col>
-                    <Col className='col-xl-6 col-lg-6 bg-light mt-5 mb-5 justify-evenly items-center'>
+                    <Col className='col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6 bg-light mt-5 mb-5 justify-evenly items-center'>
                         <Form className=' py-5 px-5'>
                             <p className='fs-2 fw-bold'> <span className='login-rect'>. </span> Login Form</p>
                             <Form.Group className="mb-3" controlId="formBasicEmail">

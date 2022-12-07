@@ -7,8 +7,10 @@ import SignUp from '../Pages/SignUp/SignUp';
 import Login from '../Pages/Login/Login';
 import UserProfile from "../Pages/UserProfile/UserProfile";
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/userprofile" element={<UserProfile />} />
+
       </Routes>
     </Router>
   );
