@@ -1,12 +1,37 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
+import axios from "axios";
 
 import './SignUp.css';
 import '../../App/App.css';
 
+
 const SignUp = () => {
+
+  const[user, setUser] = useState({
+    email: '',
+    password: '',
+    address: '',
+    city: '',
+    state: '',
+    postalcode: ''
+  });
+
+  const handleChange=(e)=>{
+    setUser({...user,[e.target.name]:e.target.value});
+  }
+  
+  const handleSignup=async(e)=>{
+    e.preventDefault();
+    try {
+      await axios.post(process.env.REACT_APP_SIGNUP_API, user);
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
     return (
       <Fragment>
         <Header />
@@ -35,29 +60,29 @@ const SignUp = () => {
                 <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" name="email" value={user.email} onChange={handleChange}/>
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder="Password" name="password" value={user.password} onChange={handleChange}/>
                   </Form.Group>
                 </Row>
 
                 <Form.Group className="mb-3" controlId="formGridAddress1">
                   <Form.Label>Address</Form.Label>
-                  <Form.Control placeholder="1234 Main St" />
+                  <Form.Control placeholder="1234 Main St" name="address" value={user.address} onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGridAddress2">
                   <Form.Label>Address 2</Form.Label>
-                  <Form.Control placeholder="Apartment, studio, or floor" />
+                  <Form.Control placeholder="Apartment, studio, or floor"/>
                 </Form.Group>
 
                 <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridCity">
                     <Form.Label>City</Form.Label>
-                    <Form.Control />
+                    <Form.Control name='city' value={user.city} onChange={handleChange}/>
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="formGridState">
@@ -70,7 +95,7 @@ const SignUp = () => {
 
                   <Form.Group as={Col} controlId="formGridZip">
                     <Form.Label>Zip</Form.Label>
-                    <Form.Control />
+                    <Form.Control name="postalcode" value={user.postalcode} onChange={handleChange}/>
                   </Form.Group>
                 </Row>
 
@@ -81,7 +106,7 @@ const SignUp = () => {
                   />
                 </Form.Group>
 
-                <Button className="btn btn-lg bg-orange w-100" type="submit">
+                <Button className="btn btn-lg bg-orange w-100" type="submit" onClick={handleSignup}>
                   Submit
                 </Button>
               </Form>
