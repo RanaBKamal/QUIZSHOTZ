@@ -1,0 +1,16 @@
+.carousel-img{
+    filter: brightness(.5);
+}
+
+.image-column{
+    height: 300px;
+    width: 450px;
+}
+
+.image-col{
+    object-fit: cover;
+    height: 100%;
+    width: 80%;
+    margin-left: 30px;
+    border-radius: 30px;
+}

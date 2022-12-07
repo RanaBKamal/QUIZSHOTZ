@@ -1,3 +1,41 @@
-.module-sidebar{
-    width: 380px;
+.card-custom:hover{
+    box-shadow: 0px 3px 0px 0px #cd501b;
+    transition: 0.5s;
 }
+
+.bread-text a{
+    color: #000 !important;
+}
+
+.bread-text, .active-bread{
+    color: #cd501b !important;
+    font-weight: bold; 
+}
+
+.laptop{
+    color: #008C95;
+    /* color:  #cd501b; */
+}
+
+.bg-orange{
+    background: #cd501b !important; 
+    color: #fff !important;
+}
+
+
+.page-link{
+    /* background: #cd501b !important; */
+    color: #000 !important;
+}
+
+.active>.page-link, .page-link.active{
+    background-color: #cd501b !important;
+    border-color: #cd501b !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+
+
+
+
