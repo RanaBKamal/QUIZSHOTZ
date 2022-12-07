@@ -16,9 +16,20 @@
   height: 91vh;
   width: auto;
   overflow: hidden;
-  background: rgb(0, 140, 149);
-  background: linear-gradient(0deg, rgba(0, 140, 149, 1) 0%, rgba(255, 255, 255, 0) 41%);
+background: rgb(18,17,17);
+background: linear-gradient(0deg, rgba(18,17,17,1) 17%, rgba(255,255,255,0) 55%);
+  /* background: #06acb8;
+  background: linear-gradient(0deg, #008c95 0%, rgba(255, 255, 255, 0) 41%); */
   color: white !important ;
+}
+
+.carousel-dark .carousel-indicators [data-bs-target] {
+    background-color: #fff !important;
+}
+
+.carousel-indicators [data-bs-target] {
+  height: 1px !important;
+  width: 150px !important;
 }
 
 .carousel-img{

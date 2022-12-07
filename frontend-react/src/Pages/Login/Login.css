@@ -30,3 +30,14 @@ section {
     color: #fff;
     font-family: 'Roboto', sans-serif;
 }
+
+.bg-orange{
+  background: #E47946 !important;
+  color: #e5e5e5;
+}
+
+.bg-orange:hover{
+  background: #cd501b;
+  color: #e5e5e5;
+  transition: 0.5s;
+}
