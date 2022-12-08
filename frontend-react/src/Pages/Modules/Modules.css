@@ -3,6 +3,10 @@
     transition: 0.5s;
 }
 
+.bg-lightblue{
+    background: #f6f7fb;
+}
+
 .bread-text a{
     color: #000 !important;
 }

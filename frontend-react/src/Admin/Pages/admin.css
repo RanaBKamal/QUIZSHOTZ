@@ -1,56 +1,85 @@
-/* The side navigation menu */
+@import url('https://fonts.googleapis.com/css2?family=Imprima&family=Sora:wght@200&display=swap');
 .sidebar {
+  font-family: 'Imprima', sans-serif;
+  font-family: 'Sora', sans-serif;
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color: #04AA6D;
+  background-color: #f2eae1;
   position: fixed;
   height: 100%;
   overflow: auto;
+  font-weight: 500;
+  overflow: hidden;
 }
 
-/* Sidebar links */
 .sidebar a {
   display: block;
-  color: black;
+  color: #f1f1f1 !important;
   padding: 16px;
   text-decoration: none;
 }
 
-/* Active/current link */
+.sidebar a:not(.active){
+  color: #000 !important;
+}
+
 .sidebar a.active {
   background-color: #cd501b;
-  color: white;
+  color: #f1f1f1;
 }
 
-/* Links on mouse-over */
 .sidebar a:hover:not(.active) {
   background-color: #555;
-  color: #000;
+  color: #f1f1f1 !important;
+  transition: 0.5s;
 }
 
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
   margin-left: 100px;
   padding: 10px 16px;
   height: 1000px;
 }
 
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
+
+  div.content {
+    margin-left: 0px !important;
+    padding: 10px 16px;
+    height: 1000px;
+}
+
   .sidebar {
     width: 100%;
     height: auto;
     position: relative;
   }
   .sidebar a {float: left;}
-  div.content {margin-left: 0;}
 }
 
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
 @media screen and (max-width: 400px) {
   .sidebar a {
     text-align: center;
     float: none;
   }
+}
+
+@media screen and (max-width: 1440px) {
+  div.content {
+    margin-left: 150px;
+    padding: 10px 16px;
+    height: 1000px;
+}
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 768px) {
+div.content {
+    margin-left: 180px;
+    padding: 10px 16px;
+    height: 1000px;
+}
 }

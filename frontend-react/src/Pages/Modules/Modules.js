@@ -36,7 +36,7 @@ const Modules = () => {
 
           <hr width="10%" />
 
-          <Row className="my-5 bg-light ">
+          <Row className="my-5 bg-lightblue">
             <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
               <Card className="card-custom">
                 <Card.Body>
