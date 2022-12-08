@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import axios from "axios";
-
+import { toast } from 'react-toastify';
 import './SignUp.css';
 import '../../App/App.css';
 
@@ -12,11 +12,12 @@ const SignUp = () => {
 
   const[user, setUser] = useState({
     email: '',
+    username: '',
     password: '',
     address: '',
-    city: '',
-    state: '',
-    postalcode: ''
+    phone: '',
+    postalcode: '',
+    role:["user"]
   });
 
   const handleChange=(e)=>{
@@ -25,11 +26,15 @@ const SignUp = () => {
   
   const handleSignup=async(e)=>{
     e.preventDefault();
-    try {
-      await axios.post(process.env.REACT_APP_SIGNUP_API, user);
-    } catch (error) {
-      console.log(error.message)
-    }
+    console.log(process.env.REACT_APP_BACKEND_URL)
+    axios.post(process.env.REACT_APP_BACKEND_URL+process.env.REACT_APP_SIGNUP_API, user)
+    .then(function(response){
+      toast.success('Successfully registered');
+    })
+    .catch(function(error){
+      console.log(error);
+      toast.error('Failed to Registered');
+    });
   }
 
     return (
@@ -46,8 +51,8 @@ const SignUp = () => {
                 />
                 <section className="text-center login-text">
                   <small>Welcome to the Quizshotz</small>
-                  <h1>Welcome Falano</h1>
-                  <small> Lorem ipsum door vu wa lorem door ispum </small>
+                  <h1>Welcome To QUIZSHOT</h1>
+                  <small> Full Stack Javascript 02 |CSAM 2022F, T3 <br/>Lambton College Mississauga. </small>
                 </section>
               </div>
             </Col>
@@ -62,10 +67,9 @@ const SignUp = () => {
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" name="email" value={user.email} onChange={handleChange}/>
                   </Form.Group>
-
-                  <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name="password" value={user.password} onChange={handleChange}/>
+                  <Form.Group as={Col} controlId="formGridUsername">
+                    <Form.Label>UserName</Form.Label>
+                    <Form.Control type="text" placeholder="Username" name="username" value={user.username} onChange={handleChange}/>
                   </Form.Group>
                 </Row>
 
@@ -74,28 +78,20 @@ const SignUp = () => {
                   <Form.Control placeholder="1234 Main St" name="address" value={user.address} onChange={handleChange}/>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formGridAddress2">
-                  <Form.Label>Address 2</Form.Label>
-                  <Form.Control placeholder="Apartment, studio, or floor"/>
-                </Form.Group>
-
                 <Row className="mb-3">
-                  <Form.Group as={Col} controlId="formGridCity">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control name='city' value={user.city} onChange={handleChange}/>
+                  <Form.Group as={Col} controlId="formGridPostalCode">
+                    <Form.Label>Postal Code</Form.Label>
+                    <Form.Control placeholder="Postal Code" name="postalcode" value={user.postalcode} onChange={handleChange}/>
                   </Form.Group>
-
-                  <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>State</Form.Label>
-                    <Form.Select defaultValue="Choose...">
-                      <option>Choose...</option>
-                      <option>...</option>
-                    </Form.Select>
+                  <Form.Group as={Col} controlId="formGridPhone">
+                    <Form.Label>Phone</Form.Label>
+                    <Form.Control placeholder="Phone" name="phone" value={user.phone} onChange={handleChange}/>
                   </Form.Group>
-
-                  <Form.Group as={Col} controlId="formGridZip">
-                    <Form.Label>Zip</Form.Label>
-                    <Form.Control name="postalcode" value={user.postalcode} onChange={handleChange}/>
+                </Row>
+                <Row className="mb-3">
+                  <Form.Group as={Col} controlId="formGridPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" name="password" value={user.password} onChange={handleChange}/>
                   </Form.Group>
                 </Row>
 

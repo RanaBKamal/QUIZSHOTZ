@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import {
   Container,
   Navbar,
@@ -9,6 +10,8 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import './Header.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Header = () => {
     return (
       <Fragment>
@@ -61,6 +64,7 @@ const Header = () => {
             </Navbar.Collapse>
           </Container>
         </Navbar>
+        <ToastContainer/>
       </Fragment>
     );
 }
