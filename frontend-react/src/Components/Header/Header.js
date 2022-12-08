@@ -69,6 +69,15 @@ const Header = () => {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu variant='dark'>
+                    {
+                      Object.keys(loggedInUser).length !== 0 &&
+                        <Dropdown.Item href='/admin' className='pt-0 pb-0 mt-0 mb-0'>
+                          {
+                            loggedInUser.roles.includes("ROLE_ADMIN") && 
+                              <span>Admin Dashboard</span>
+                          }
+                        </Dropdown.Item>
+                    }
                     <Dropdown.Item onClick={logoutUser}>Logout</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
