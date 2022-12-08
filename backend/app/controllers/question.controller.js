@@ -10,6 +10,10 @@ exports.getQuestion = async (req, res) => {
     const question = await Question.find({"_id": req.params.questionId});
 	res.send(question);
 };
+exports.getRandomQuestions = async (req, res) => {
+    const questions = await Question.find();
+	res.send(questions);
+};
 
 exports.addQuestion = (req, res) => {
     const question = new Question({

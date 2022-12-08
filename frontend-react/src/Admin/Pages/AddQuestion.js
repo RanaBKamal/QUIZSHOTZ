@@ -1,10 +1,61 @@
 import AdminNav from "./AdminNav";
-import { Container, Row, Col, Form, Button, Dropdown} from "react-bootstrap";
+import { Container, Row, Col, Card} from "react-bootstrap";
+import { Archive, PencilSquare } from "react-bootstrap-icons";
 import "./admin.css";
 
-const { Fragment } = require("react");
+import { Fragment, useState, useEffect } from "react";
+import {NavLink} from 'react-router-dom';
+import axios from 'axios';
 
-const AddModule = () => {
+const AddQuestion = () => {
+
+    const [modules, setModules] = useState([]);
+
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_BACKEND_URL+process.env.REACT_APP_GET_MODULE_API)
+        .then(function(response){
+            // toast.success("Successfully Added");
+            setModules(response.data);
+            // window.location.reload(false);
+        })
+        .catch(function(error){
+            // console.log(error);
+            // toast.error("Failed to Add");
+        });
+    }, []);
+    const moduleElements = modules.map((item) =>(
+        <Col className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 pt-3" key={item._id}>
+            <Card bg="primary text-light">
+                <Card.Body>
+                <p className="fw-bold">{item.name}</p>
+                <div>
+                    <span>
+                        <Archive
+                        className=" text-light"
+                        cursor="pointer"
+                        size="32"
+                        />
+                    </span>
+                    <span>
+                        <PencilSquare
+                        className=" text-light "
+                        cursor="pointer"
+                        size={32}
+                        />
+                    </span>
+                </div>
+                <div>
+                    <NavLink 
+                        to={`/admin/add-question/${item._id}`}
+                        className="btn btn-sm btn-default btn-success mt-3"
+                    >
+                        Add Question
+                    </NavLink>
+                </div>
+                </Card.Body>
+            </Card>
+        </Col>
+    ));
   return (
     <Fragment>
       <AdminNav />
@@ -12,69 +63,16 @@ const AddModule = () => {
         <div className="content">
           <Row>
             <Col className="bg-light">
-              <p className="fs-1 fw-bold">Admin Question</p>
+              <p className="fs-1 fw-bold">Choose Module to add Question</p>
             </Col>
-
-            <Col className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
-              <Form>
-                <Form.Label className="fw-bold fs-2 mb-2">
-                  Choose your Module
-                  <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                      Module 1
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu className="text-dark">
-                      <Dropdown.Item className="text-dark" href="#/action-1">
-                        Module 0
-                      </Dropdown.Item>
-                      <Dropdown.Item className="text-dark" href="#/action-2">
-                        Module 2
-                      </Dropdown.Item>
-                      <Dropdown.Item className="text-dark" href="#/action-3">
-                        Something else
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </Form.Label>
-                <Form.Group
-                  className="mb-3"
-                  controlId="exampleForm.ControlTextarea1"
-                >
-                  <Form.Label>Add question</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={1}
-                    placeholder="question here"
-                  />
-                </Form.Group>
-                <Button variant="primary">Add</Button>
-                <Form.Group
-                  className="mb-3"
-                  controlId="exampleForm.ControlTextarea1"
-                >
-                  <Form.Label>Add question</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={1}
-                    placeholder="Answers here"
-                  />
-                </Form.Group>
-                <Button variant="primary">Add</Button>
-              </Form>
-            </Col>
-            <Col className="mt-5 ">
-              <p className="Question">Here is the Question</p>
-              <p className="Answers">1. Answer 1</p>
-              <p className="Answers">2. Answer 1</p>
-              <p className="Answers">3. Answer 3</p>
-              <p className="Answers">4. Answer 4</p>
-            </Col>
-          </Row>
+            </Row>
+            <Row>
+                {moduleElements}
+            </Row>
         </div>
       </Container>
     </Fragment>
   );
 };
 
-export default AddModule;
+export default AddQuestion;

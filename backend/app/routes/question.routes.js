@@ -11,11 +11,15 @@ module.exports = function(app) {
   });
 
   app.get(
-    "/api/admin/question/:questionId",
+    "/api/user/question/:questionId",
     controller.getQuestion
   );
   app.get(
-    "/api/admin/questions/:moduleId",
+    "/api/user/random-questions",
+    controller.getRandomQuestions
+  );
+  app.get(
+    "/api/user/questions/:moduleId",
     controller.getQuestions
   );
 

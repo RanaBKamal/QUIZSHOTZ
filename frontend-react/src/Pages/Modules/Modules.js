@@ -1,7 +1,9 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { LaptopFill } from "react-bootstrap-icons";
+import axios from 'axios';
+
 import './Modules.css';
 import { Container, Row, Col, Card, Button, Badge, Breadcrumb, Pagination } from 'react-bootstrap';
 
@@ -16,6 +18,37 @@ for (let number = 1; number <= 3; number++) {
 }
 
 const Modules = () => {
+  const [modules, setModules] = useState([]);
+
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_BACKEND_URL+process.env.REACT_APP_GET_MODULES_API)
+        .then(function(response){
+            // toast.success("Successfully Added");
+            setModules(response.data);
+            // window.location.reload(false);
+        })
+        .catch(function(error){
+            // console.log(error);
+            // toast.error("Failed to Add");
+        });
+    }, []);
+    const moduleElements = modules.map((item) =>(
+      <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile" key={item._id}>
+        <Card className="card-custom">
+          <Card.Body>
+            <a href="/" className="text-dark">
+              <Card.Title className="fw-bold">
+                {item.name}
+              </Card.Title>
+              <Card.Text>
+                <Badge bg="orange"> questions</Badge>{" "}
+              </Card.Text>
+              <Button variant="outline-dark">Preview</Button>
+            </a>
+          </Card.Body>
+        </Card>
+      </Col>
+    ));
     return (
       <Fragment>
         <Header />
@@ -37,142 +70,7 @@ const Modules = () => {
           <hr width="10%" />
 
           <Row className="my-5 bg-light ">
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      C# Quiz challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">10 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      Java Quiz challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">12 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      Ruby Quiz challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">20 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      LeetCode Quiz challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">15 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      Moodle Quiz challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">14 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      PL-SQL Quiz challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">18 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      SQL Quiz challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">31 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      Fortan challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">10 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col className="col-12 col-sm-12 col-md-4 col-lg-3 mb-3 mt-3 col-sm-mobile">
-              <Card className="card-custom">
-                <Card.Body>
-                  <a href="/" className="text-dark">
-                    <Card.Title className="fw-bold">
-                      React JS Quiz challenges
-                    </Card.Title>
-                    <Card.Text>
-                      <Badge bg="orange">10 questions</Badge>{" "}
-                    </Card.Text>
-                    <Button variant="outline-dark">Preview</Button>
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Pagination className='justify-content-end text-dark'>{items}</Pagination>
+            {moduleElements}
           </Row>
         </Container>
         <Footer />

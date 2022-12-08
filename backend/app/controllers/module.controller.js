@@ -4,6 +4,10 @@ exports.getModules = async (req, res) => {
     const modules = await Module.find();
 	res.send(modules);
 };
+exports.getModuleById = async (req, res) => {
+    const module = await Module.find({'_id': req.params.moduleId});
+	res.send(module);
+};
 
 exports.addModule = (req, res) => {
     const module = new Module({

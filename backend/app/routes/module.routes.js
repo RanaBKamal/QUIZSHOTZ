@@ -11,8 +11,12 @@ module.exports = function(app) {
   });
 
   app.get(
-    "/api/admin/module",
+    "/api/user/module",
     controller.getModules
+  );
+  app.get(
+    "/api/user/module/:moduleId",
+    controller.getModuleById
   );
 
   app.post(

@@ -43,7 +43,7 @@ const AddModule = () => {
     const [modules, setModules] = useState([]);
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_BACKEND_URL+process.env.REACT_APP_ADMIN_ADD_MODULE_API)
+        axios.get(process.env.REACT_APP_BACKEND_URL+process.env.REACT_APP_GET_MODULES_API)
         .then(function(response){
             // toast.success("Successfully Added");
             setModules(response.data);
@@ -61,22 +61,18 @@ const AddModule = () => {
                 <p className="fw-bold">{item.name}</p>
                 <div>
                     <span>
-                    <a className="" href="#">
                         <Archive
                         className=" text-light"
                         cursor="pointer"
                         size="32"
                         />
-                    </a>
                     </span>
                     <span>
-                    <a className="" href="#">
                         <PencilSquare
                         className=" text-light "
                         cursor="pointer"
                         size={32}
                         />
-                    </a>
                     </span>
                 </div>
                 </Card.Body>
