@@ -81,7 +81,7 @@ const AddModule = () => {
     ));
     return (
       <Fragment>
-        <AdminNav />
+        
         <Container>
           <div className="content">
             <Row>

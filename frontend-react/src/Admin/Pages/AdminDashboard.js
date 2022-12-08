@@ -15,10 +15,10 @@ const AdminDashboard = () => {
           <div className="content">
             <Row>
                 <Col>
-            <Card bg="warning">
-              <Card.Title>Total Module</Card.Title>
-              <Card.Body>1</Card.Body>
-            </Card>
+                  <Card bg="warning">
+                    <Card.Title>Total Module</Card.Title>
+                    <Card.Body>1</Card.Body>
+                  </Card>
                 </Col>
             </Row>
           </div>
