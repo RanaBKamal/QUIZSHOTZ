@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Carousel, Row, Col, Card, Container, Button} from 'react-bootstrap';
+import { Carousel, Row, Col, Card, Container } from 'react-bootstrap';
 import './HomeCarousel.css';
 
 const HomeCarousel = () => {
@@ -14,8 +14,8 @@ const HomeCarousel = () => {
               alt="First slide"
             />
             <Carousel.Caption className="text-light">
-              <h4>First slide label</h4>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <h4>QUIZSHOT by CSAM</h4>
+              <p>This Project is developed for Term Project CSAM 2022F T3</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
@@ -95,7 +95,7 @@ const HomeCarousel = () => {
 
           <Col className="text-center p-5">
             <p className="fs-3 fw-bold">Ready to start getting better results?</p>
-            <Button variant='primary' className=''>Register Now</Button>
+            <a className='btn btn-default btn-primary' href='/signup'>Register Now</a>
           </Col>
         </Container>
       </Fragment>

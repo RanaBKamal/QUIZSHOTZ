@@ -8,11 +8,22 @@ import {
   Button,
   Form,
   NavDropdown,
+  Dropdown
 } from "react-bootstrap";
 import './Header.css';
 import 'react-toastify/dist/ReactToastify.css';
-
+import * as Icon from 'react-bootstrap-icons';
 const Header = () => {
+    const logoutUser = () => {
+      localStorage.removeItem("loggedin_user");
+      window.location.reload(false);
+    }
+    const loggedInUser = 
+      JSON.parse(
+        localStorage.getItem("loggedin_user") !== null ?
+          localStorage.getItem("loggedin_user") : 
+          "{}"
+      );
     return (
       <Fragment>
         <Navbar expand="lg" className="navbar-custom py-3 bg-darkblue-custom">
@@ -36,15 +47,32 @@ const Header = () => {
                 <Form.Control
                   type="search"
                   placeholder="Search"
-                  className="me-2"
+                  className="me-2 ps-2"
                   aria-label="Search"
                 />
                 <Button variant="outline-light" className="me-4">
                   Search
                 </Button>
               </Form>
-              <NavLink to="/login">Login</NavLink> &nbsp;|&nbsp;
-              <NavLink to="/signup">SignUp</NavLink>
+              {
+                Object.keys(loggedInUser).length === 0 &&
+                <div>
+                  <NavLink to="/login">Login</NavLink> &nbsp;|&nbsp;
+                  <NavLink to="/signup">SignUp</NavLink>
+                </div>
+              }
+              {
+                Object.keys(loggedInUser).length !== 0 &&
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <Icon.Person/> {loggedInUser?.username}
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu variant='dark'>
+                    <Dropdown.Item onClick={logoutUser}>Logout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              }
               <NavDropdown
                 title="Falano"
                 id="basic-nav-dropdown"

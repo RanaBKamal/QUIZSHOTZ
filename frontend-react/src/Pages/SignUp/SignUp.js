@@ -26,7 +26,6 @@ const SignUp = () => {
   
   const handleSignup=async(e)=>{
     e.preventDefault();
-    console.log(process.env.REACT_APP_BACKEND_URL)
     axios.post(process.env.REACT_APP_BACKEND_URL+process.env.REACT_APP_SIGNUP_API, user)
     .then(function(response){
       toast.success('Successfully registered');
