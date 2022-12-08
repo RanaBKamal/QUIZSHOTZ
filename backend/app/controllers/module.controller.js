@@ -1,18 +1,8 @@
 const Module = require("../models/module.model");
 
-exports.getModules = (req, res) => {
-    Module.find().then(
-    (things) => {
-      res.status(200).json(things);
-    }
-    ).catch(
-        (error) => {
-        res.status(400).json({
-            error: error
-        });
-        }
-    );
-    res.status(500).send("Internal server error");
+exports.getModules = async (req, res) => {
+    const modules = await Module.find();
+	res.send(modules);
 };
 
 exports.addModule = (req, res) => {
@@ -20,6 +10,10 @@ exports.addModule = (req, res) => {
         name: req.body.name,
         type: req.body.type
     });
+    if (req.body.name === ""){
+        res.status(400).send({message: "cant be empty"});
+        return;
+    }
     module.save((err, module) => {
         if (err) {
             res.status(500).send({ message: err });

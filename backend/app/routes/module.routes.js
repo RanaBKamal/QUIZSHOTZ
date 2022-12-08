@@ -12,7 +12,6 @@ module.exports = function(app) {
 
   app.get(
     "/api/admin/module",
-    [authJwt.verifyToken, authJwt.isAdmin],
     controller.getModules
   );
 

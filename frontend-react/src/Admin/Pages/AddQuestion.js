@@ -9,7 +9,7 @@ const AddModule = () => {
     <Fragment>
       <AdminNav />
       <Container>
-        <div class="content">
+        <div className="content">
           <Row>
             <Col className="bg-light">
               <p className="fs-1 fw-bold">Admin Question</p>

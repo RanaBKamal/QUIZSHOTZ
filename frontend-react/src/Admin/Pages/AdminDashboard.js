@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
 import AdminNav from "./AdminNav";
 import { Card, Container, Row, Col} from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
-const { Fragment } = require("react");
+import { Fragment } from "react";
 
 const AdminDashboard = () => {
   return (
     <Fragment>
+        <ToastContainer/>
       <AdminNav>
         <Container>
           <div className="content">
